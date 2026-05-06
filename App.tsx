@@ -1,32 +1,65 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 
 export default function App() {
+  const [steps, setSteps] = useState(6240);
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Activity</Text>
-        <Text style={styles.date}>Wednesday, May 6</Text>
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.title}>Activity</Text>
+          <Text style={styles.date}>Wednesday, May 6</Text>
+        </View>
 
-      <View style={styles.centerStage}>
-        {/* The Progress Ring Shell */}
-        <View style={styles.progressRing}>
-          <Text style={styles.stepCount}>6,240</Text>
-          <Text style={styles.stepLabel}>STEPS</Text>
+        {/* Progress Ring Section */}
+        <View style={styles.centerStage}>
+          <TouchableOpacity 
+            activeOpacity={0.8} 
+            onPress={() => setSteps(steps + 100)}
+            style={styles.progressRing}
+          >
+            <Text style={styles.stepCount}>{steps.toLocaleString()}</Text>
+            <Text style={styles.stepLabel}>STEPS</Text>
+          </TouchableOpacity>
         </View>
-      </View>
 
-      <View style={styles.statsRow}>
-        <View style={styles.statBox}>
-          <Text style={styles.statValue}>1.2</Text>
-          <Text style={styles.statLabel}>KM</Text>
+        {/* Stats Row */}
+        <View style={styles.statsRow}>
+          <View style={styles.statBox}>
+            <Text style={styles.statValue}>1.2</Text>
+            <Text style={styles.statLabel}>KM</Text>
+          </View>
+          <View style={styles.statBox}>
+            <Text style={styles.statValue}>320</Text>
+            <Text style={styles.statLabel}>KCAL</Text>
+          </View>
         </View>
-        <View style={styles.statBox}>
-          <Text style={styles.statValue}>320</Text>
-          <Text style={styles.statLabel}>KCAL</Text>
+
+        {/* Workout Section */}
+        <View style={styles.workoutSection}>
+          <Text style={styles.sectionTitle}>Daily Workouts</Text>
+          
+          {/* Workout Card 1 */}
+          <TouchableOpacity style={styles.workoutCard}>
+            <View>
+              <Text style={styles.workoutName}>Morning Yoga</Text>
+              <Text style={styles.workoutTime}>20 Min • Low Intensity</Text>
+            </View>
+            <Text style={styles.arrow}>→</Text>
+          </TouchableOpacity>
+
+          {/* Workout Card 2 */}
+          <TouchableOpacity style={styles.workoutCard}>
+            <View>
+              <Text style={styles.workoutName}>High Intensity HIIT</Text>
+              <Text style={styles.workoutTime}>35 Min • High Intensity</Text>
+            </View>
+            <Text style={styles.arrow}>→</Text>
+          </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -48,25 +81,20 @@ const styles = StyleSheet.create({
   date: {
     color: '#666',
     fontSize: 16,
-    textTransform: 'uppercase',
   },
   centerStage: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 30,
   },
   progressRing: {
-    width: 280,
-    height: 280,
-    borderRadius: 140,
-    borderWidth: 20,
-    borderColor: '#CCFF00', // Electric Lime
+    width: 260,
+    height: 260,
+    borderRadius: 130,
+    borderWidth: 15,
+    borderColor: '#CCFF00',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#CCFF00',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.3,
-    shadowRadius: 15,
   },
   stepCount: {
     color: '#fff',
@@ -75,13 +103,12 @@ const styles = StyleSheet.create({
   },
   stepLabel: {
     color: '#666',
-    letterSpacing: 2,
     fontWeight: '600',
   },
   statsRow: {
     flexDirection: 'row',
-    padding: 30,
     justifyContent: 'space-around',
+    marginBottom: 40,
   },
   statBox: {
     alignItems: 'center',
@@ -93,6 +120,36 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     color: '#666',
-    fontSize: 12,
   },
+  workoutSection: {
+    paddingHorizontal: 20,
+  },
+  sectionTitle: {
+    color: '#fff',
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  workoutCard: {
+    backgroundColor: '#1A1A1A',
+    padding: 20,
+    borderRadius: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  workoutName: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  workoutTime: {
+    color: '#666',
+    marginTop: 4,
+  },
+  arrow: {
+    color: '#CCFF00',
+    fontSize: 24,
+  }
 });
