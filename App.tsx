@@ -1,64 +1,54 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
-
 export default function App() {
   const [steps, setSteps] = useState(6240);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+    <SafeAreaView className="flex-1 bg-black">
+      <ScrollView showsVerticalScrollIndicator={false} className="px-5">
+        
         {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.title}>Activity</Text>
-          <Text style={styles.date}>Wednesday, May 6</Text>
+        <View className="mt-10 mb-8">
+          <Text className="text-white text-4xl font-bold">Activity</Text>
+          <Text className="text-gray-500 uppercase tracking-widest">Wednesday, May 6</Text>
         </View>
 
-        {/* Progress Ring Section */}
-        <View style={styles.centerStage}>
+        {/* Progress Ring */}
+        <View className="items-center justify-center my-10">
           <TouchableOpacity 
-            activeOpacity={0.8} 
             onPress={() => setSteps(steps + 100)}
-            style={styles.progressRing}
+            className="w-64 h-64 rounded-full border-[15px] border-active-lime items-center justify-center"
           >
-            <Text style={styles.stepCount}>{steps.toLocaleString()}</Text>
-            <Text style={styles.stepLabel}>STEPS</Text>
+            <Text className="text-white text-5xl font-black">{steps.toLocaleString()}</Text>
+            <Text className="text-gray-500 font-semibold tracking-tighter">STEPS</Text>
           </TouchableOpacity>
         </View>
 
         {/* Stats Row */}
-        <View style={styles.statsRow}>
-          <View style={styles.statBox}>
-            <Text style={styles.statValue}>1.2</Text>
-            <Text style={styles.statLabel}>KM</Text>
+        <View className="flex-row justify-around mb-10">
+          <View className="items-center">
+            <Text className="text-white text-2xl font-bold">1.2</Text>
+            <Text className="text-gray-500">KM</Text>
           </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statValue}>320</Text>
-            <Text style={styles.statLabel}>KCAL</Text>
+          <View className="items-center">
+            <Text className="text-white text-2xl font-bold">320</Text>
+            <Text className="text-gray-500">KCAL</Text>
           </View>
         </View>
 
         {/* Workout Section */}
-        <View style={styles.workoutSection}>
-          <Text style={styles.sectionTitle}>Daily Workouts</Text>
+        <View>
+          <Text className="text-white text-xl font-bold mb-4">Daily Workouts</Text>
           
-          {/* Workout Card 1 */}
-          <TouchableOpacity style={styles.workoutCard}>
+          <TouchableOpacity className="bg-zinc-900 p-5 rounded-2xl flex-row justify-between items-center mb-3">
             <View>
-              <Text style={styles.workoutName}>Morning Yoga</Text>
-              <Text style={styles.workoutTime}>20 Min • Low Intensity</Text>
+              <Text className="text-white text-lg font-bold">Morning Yoga</Text>
+              <Text className="text-gray-500">20 Min • Low Intensity</Text>
             </View>
-            <Text style={styles.arrow}>→</Text>
-          </TouchableOpacity>
-
-          {/* Workout Card 2 */}
-          <TouchableOpacity style={styles.workoutCard}>
-            <View>
-              <Text style={styles.workoutName}>High Intensity HIIT</Text>
-              <Text style={styles.workoutTime}>35 Min • High Intensity</Text>
-            </View>
-            <Text style={styles.arrow}>→</Text>
+            <Text className="text-active-lime text-xl">→</Text>
           </TouchableOpacity>
         </View>
+
       </ScrollView>
     </SafeAreaView>
   );
