@@ -7,33 +7,124 @@ which lets the app use Tailwind-style classes in React Native components.
 
 ```text
 fitness_tech/
-  App.tsx                 # Main app screen and current UI
-  index.js                # Expo entry file; imports global.css and registers App
-  global.css              # NativeWind Tailwind directives
-  app.json                # Expo app configuration
-  package.json            # Dependencies and npm scripts
-  package-lock.json       # Locked npm dependency versions
-  babel.config.js         # Expo + NativeWind Babel setup
-  metro.config.js         # Expo Metro setup with NativeWind
-  tailwind.config.js      # Tailwind/NativeWind theme and content paths
-  tsconfig.json           # TypeScript configuration
-  nativewind-env.d.ts     # NativeWind TypeScript declarations
-  assets/                 # Expo app icons and splash images
-    adaptive-icon.png
-    favicon.png
-    icon.png
-    splash-icon.png
-  src/                    # Planned app organization folders
-    components/           # Reusable UI components
-    hooks/                # Custom React hooks
-    navigation/           # Navigation setup
-    screens/              # Screen-level components
-    theme/                # Theme constants and styling helpers
-    utils/                # Utility functions
+|
+├── App.tsx
+├── index.js
+├── app.json
+├── babel.config.js
+├── metro.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── global.css
+├── .env
+|
+├── assets/
+|   ├── fonts/
+|   ├── icons/
+|   ├── images/
+|   └── animations/
+|
+├── src/
+|   ├── api/
+|   |   ├── client.ts
+|   |   ├── endpoints.ts
+|   |   └── services/
+|   |       ├── auth.service.ts
+|   |       ├── workout.service.ts
+|   |       └── nutrition.service.ts
+|   |
+|   ├── components/
+|   |   ├── common/
+|   |   |   ├── Button.tsx
+|   |   |   ├── Input.tsx
+|   |   |   ├── Loader.tsx
+|   |   |   ├── Header.tsx
+|   |   |   └── ScreenWrapper.tsx
+|   |   ├── workout/
+|   |   ├── nutrition/
+|   |   └── profile/
+|   |
+|   ├── constants/
+|   |   ├── colors.ts
+|   |   ├── fonts.ts
+|   |   ├── spacing.ts
+|   |   └── mockData.ts
+|   |
+|   ├── context/
+|   |   ├── AuthContext.tsx
+|   |   └── ThemeContext.tsx
+|   |
+|   ├── hooks/
+|   |   ├── useAuth.ts
+|   |   ├── useTheme.ts
+|   |   └── useWorkout.ts
+|   |
+|   ├── navigation/
+|   |   ├── AppNavigator.tsx
+|   |   ├── AuthNavigator.tsx
+|   |   ├── BottomTabs.tsx
+|   |   └── types.ts
+|   |
+|   ├── screens/
+|   |   ├── auth/
+|   |   |   ├── LoginScreen.tsx
+|   |   |   └── RegisterScreen.tsx
+|   |   ├── home/
+|   |   |   └── HomeScreen.tsx
+|   |   ├── workout/
+|   |   |   ├── WorkoutScreen.tsx
+|   |   |   └── ExerciseDetailsScreen.tsx
+|   |   ├── nutrition/
+|   |   |   └── NutritionScreen.tsx
+|   |   ├── profile/
+|   |   |   └── ProfileScreen.tsx
+|   |   └── settings/
+|   |       └── SettingsScreen.tsx
+|   |
+|   ├── services/
+|   |   ├── storage/
+|   |   |   ├── asyncStorage.ts
+|   |   |   └── secureStorage.ts
+|   |   ├── notifications/
+|   |   |   └── notification.service.ts
+|   |   └── analytics/
+|   |       └── analytics.service.ts
+|   |
+|   ├── store/
+|   |   ├── index.ts
+|   |   ├── authSlice.ts
+|   |   ├── workoutSlice.ts
+|   |   └── nutritionSlice.ts
+|   |
+|   ├── theme/
+|   |   ├── index.ts
+|   |   ├── colors.ts
+|   |   └── typography.ts
+|   |
+|   ├── types/
+|   |   ├── auth.types.ts
+|   |   ├── workout.types.ts
+|   |   └── navigation.types.ts
+|   |
+|   ├── utils/
+|   |   ├── helpers.ts
+|   |   ├── validators.ts
+|   |   ├── formatters.ts
+|   |   └── logger.ts
+|   |
+|   └── config/
+|       ├── env.ts
+|       └── index.ts
+|
+├── tests/
+|   ├── components/
+|   ├── screens/
+|   └── utils/
+|
+└── README.md
 ```
 
-Note: the current app UI is in `App.tsx`. The `src/` folders are available
-for organizing the app as it grows.
+Note: the app entry starts in `App.tsx`, then loads `src/navigation/AppNavigator.tsx`.
 
 ## Requirements
 
