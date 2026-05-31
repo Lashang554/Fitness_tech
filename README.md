@@ -1,59 +1,126 @@
 # Fitness Tech
 
-Expo + React Native app styled with **NativeWind (Tailwind for React Native)**.
+Fitness Tech is an Expo + React Native app styled with **NativeWind**,
+which lets the app use Tailwind-style classes in React Native components.
 
-## Folder structure
+## Project Structure
 
 ```text
-src/
-  components/    # Reusable UI (Buttons, Cards, ProgressRings)
-  screens/       # Full page views (Home, WorkoutDetail, Profile)
-  navigation/    # Tab and Stack configuration
-  hooks/         # Custom logic (e.g., useStepCounter, useTimer)
-  theme/         # Tailwind constants / global colors
-  utils/         # Helpers (formatters, small utilities)
+fitness_tech/
+  App.tsx                 # Main app screen and current UI
+  index.js                # Expo entry file; imports global.css and registers App
+  global.css              # NativeWind Tailwind directives
+  app.json                # Expo app configuration
+  package.json            # Dependencies and npm scripts
+  package-lock.json       # Locked npm dependency versions
+  babel.config.js         # Expo + NativeWind Babel setup
+  metro.config.js         # Expo Metro setup with NativeWind
+  tailwind.config.js      # Tailwind/NativeWind theme and content paths
+  tsconfig.json           # TypeScript configuration
+  nativewind-env.d.ts     # NativeWind TypeScript declarations
+  assets/                 # Expo app icons and splash images
+    adaptive-icon.png
+    favicon.png
+    icon.png
+    splash-icon.png
+  src/                    # Planned app organization folders
+    components/           # Reusable UI components
+    hooks/                # Custom React hooks
+    navigation/           # Navigation setup
+    screens/              # Screen-level components
+    theme/                # Theme constants and styling helpers
+    utils/                # Utility functions
 ```
 
-## Prerequisites
+Note: the current app UI is in `App.tsx`. The `src/` folders are available
+for organizing the app as it grows.
 
-- Node.js + npm
-- For mobile testing:
-  - Expo Go on your phone (recommended)
-  - Android or iOS simulator (optional)
+## Requirements
 
-## Install
+- Node.js
+- npm
+- Expo Go on your phone for mobile testing
+- Android Studio or Xcode if you want to run an emulator/simulator
+
+## Install Dependencies
+
+Run this once after cloning or downloading the project:
 
 ```bash
 npm install
 ```
 
-## Run (Expo)
+## Start The Project
 
-### 1) Phone with Expo Go
-Start the dev server:
+### Start normally
+
+```bash
+npm start
+```
+
+This runs:
+
+```bash
+expo start
+```
+
+After the Expo dev server opens, choose how you want to run the app:
+
+- Press `a` for Android emulator/device.
+- Press `i` for iOS simulator.
+- Press `w` for web.
+- Scan the QR code with Expo Go to run on your phone.
+
+### Start on a phone with tunnel mode
+
+Use this if your phone and computer are not connecting on the same network:
+
 ```bash
 npx expo start --tunnel -c
 ```
-Then scan the QR code shown in the terminal using Expo Go on your phone.
 
-### 2) Web (browser)
-```bash
-npx expo start --web
-```
-Open the printed URL (usually `http://localhost:8081`).
+Then scan the QR code with Expo Go.
 
-### 3) Android / iOS simulators
+### Start on web
+
 ```bash
-npx expo start --android
-# or
-npx expo start --ios
+npm run web
 ```
 
-## NativeWind setup notes
+### Start on Android
 
-- `babel.config.js` includes the `nativewind/babel` plugin and sets `jsxImportSource: "nativewind"`.
-- `tailwind.config.js` includes `presets: [require("nativewind/preset")]`.
-- `metro.config.js` wraps Expo Metro with `withNativeWind(...)` and points to `global.css`.
+```bash
+npm run android
+```
 
-If you change Tailwind/NativeWind files, restart the Expo server and reload the app.
+### Start on iOS
 
+```bash
+npm run ios
+```
+
+## Available Scripts
+
+```bash
+npm start        # Start the Expo dev server
+npm run android  # Start Expo for Android
+npm run ios      # Start Expo for iOS
+npm run web      # Start Expo for web
+```
+
+## NativeWind Setup
+
+NativeWind is already configured in these files:
+
+- `index.js` imports `./global.css`.
+- `global.css` includes Tailwind base, component, and utility directives.
+- `babel.config.js` enables `nativewind/babel` and `jsxImportSource`.
+- `tailwind.config.js` uses `nativewind/preset` and defines the `active-lime` color.
+- `metro.config.js` wraps Expo Metro with `withNativeWind(...)`.
+
+If you change Tailwind, NativeWind, Babel, or Metro config files, stop the
+Expo server and start it again with cache clearing:
+
+```bash
+npx expo start -c
+```
