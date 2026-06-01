@@ -217,7 +217,6 @@ NativeWind is already configured in these files:
 - `metro.config.js` wraps Expo Metro with `withNativeWind(...)`.
 
 If you change Tailwind, NativeWind, Babel, or Metro config files, stop the
-Expo server and start it again with cache clearing:
 
 ```bash
 npx expo start -c
