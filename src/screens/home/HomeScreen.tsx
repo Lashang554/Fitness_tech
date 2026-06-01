@@ -35,9 +35,15 @@ export function HomeScreen() {
       </View>
       {workouts.map((workout) => (
         <View key={workout.id} className="mb-3 rounded-2xl bg-zinc-900 p-5">
-          <Text className="text-lg font-bold text-white">{workout.title}</Text>
+          <View className="mb-2 flex-row items-center justify-between">
+            <Text className="text-lg font-bold text-white">{workout.title}</Text>
+            <Text className="text-xs font-semibold uppercase text-active-lime">
+              {workout.category}
+            </Text>
+          </View>
           <Text className="text-zinc-500">
-            {workout.durationMinutes} Min - {workout.intensity} Intensity
+            {formatMinutes(workout.durationMinutes)} - {workout.intensity} Intensity -{' '}
+            {formatCalories(workout.calories)}
           </Text>
         </View>
       ))}
