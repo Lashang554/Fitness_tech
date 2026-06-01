@@ -3,12 +3,6 @@
 Fitness Tech is an Expo + React Native app styled with **NativeWind**,
 which lets the app use Tailwind-style classes in React Native components.
 
-## Features
-
-- Activity dashboard with daily steps and workout totals.
-- Workout cards with duration, intensity, category, and calorie estimates.
-- Bottom-tab structure for activity, workouts, nutrition, profile, and settings.
-
 ## Project Structure
 
 ```text
