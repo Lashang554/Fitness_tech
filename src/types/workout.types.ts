@@ -5,4 +5,6 @@ export type Workout = {
   title: string;
   durationMinutes: number;
   intensity: WorkoutIntensity;
+  category: string;
+  calories: number;
 };
