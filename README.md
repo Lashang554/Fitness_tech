@@ -197,6 +197,15 @@ npm start        # Start the Expo dev server
 npm run android  # Start Expo for Android
 npm run ios      # Start Expo for iOS
 npm run web      # Start Expo for web
+npm run typecheck # Check TypeScript types
+```
+
+## Verify Changes
+
+Run this before pushing changes that touch TypeScript files:
+
+```bash
+npm run typecheck
 ```
 
 ## NativeWind Setup
