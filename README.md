@@ -133,6 +133,13 @@ Note: the app entry starts in `App.tsx`, then loads `src/navigation/AppNavigator
 - Expo Go on your phone for mobile testing
 - Android Studio or Xcode if you want to run an emulator/simulator
 
+## Tech Stack
+
+- Expo
+- React Native
+- NativeWind
+- TypeScript
+
 ## Install Dependencies
 
 Run this once after cloning or downloading the project:
